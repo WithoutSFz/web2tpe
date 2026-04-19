@@ -10,4 +10,4 @@ Marco Ezequiel Fernandez
 
 #DER
 
-![Diagrama Entidad Relacion](DER.png)
+![Diagrama Entidad Relacion](DER.jpg)
