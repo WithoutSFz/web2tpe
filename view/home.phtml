@@ -1,0 +1,30 @@
+<?php
+class HomeVista {
+    public function showHome() {
+        ?>
+        <!DOCTYPE html>
+        <html lang="es">
+        <head>
+            <base href="<?php echo BASE_URL; ?>"> <!-- Esto arregla los links si usas carpetas -->
+            <meta charset="UTF-8">
+            <title>Biblioteca TUDAI - Inicio</title>
+            <link rel="stylesheet" href="css/style.css">
+        </head>
+        <body>
+            <h1>Bienvenido a la Biblioteca Digital</h1>
+            
+            <h2>Explorar Contenido</h2>
+            <p>
+                <a href="listarLibros">Ver Listado Completo de Libros</a> 
+                (Acceso Público)
+            </p>
+
+            <h2>Administración</h2>
+            <p>
+                <a href="login">Acceder al Panel de Administración</a> 
+            </p>
+        </body>
+        </html>
+        <?php
+    }
+}

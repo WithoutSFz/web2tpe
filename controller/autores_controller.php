@@ -12,8 +12,8 @@ class AutoresController{
 
     function __construct(){
         $this->modelAutor= new AutoresModel();
-        $this->viewAutor ;
-        $this->viewLibro ;
+       /* $this->viewAutor= new AutoresView();
+        $this->viewLibro= new LibrosView();*/
     }
 
     /*mostrar todos los autores*/

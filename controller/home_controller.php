@@ -1,15 +1,15 @@
 <?php
-include_once 'TPE2/vista/home.phtml';
+include_once 'WEB2TPE/view/home_view.phtml';
 
     class ControladorHome {
-        private $vista;
+        private $view;
 
         public function __construct() {
-            $this->vista = new HomeVista();
+            $this->view = new HomeVista();
         }
 
         public function showHome() {
-            $this->vista->showHome();
+            $this->view->showHome();
         }
     }
 ?>
