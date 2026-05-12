@@ -1,8 +1,9 @@
 <?php
-include_once 'WEB2TPE/model/autores_model.php';
-include_once 'WEB2TPE/model/libros_model.php';
-include_once 'WEB2TPE/view/autores_view.php';
-include_once 'WEB2TPE/view/libros_view.php';
+include_once 'model/autores_model.php';
+//include_once 'model/libros_model.php';
+include_once 'view/autores_view.php';
+include_once 'view/libros_view.php';
+include_once 'middleware/auth.helper.php';
 
 
 class AutoresController{
@@ -12,8 +13,8 @@ class AutoresController{
 
     function __construct(){
         $this->modelAutor= new AutoresModel();
-       /* $this->viewAutor= new AutoresView();
-        $this->viewLibro= new LibrosView();*/
+        $this->viewAutor= new AutoresView();
+        /*$this->viewLibro= new LibrosView();*/
     }
 
     /*mostrar todos los autores*/

@@ -1,5 +1,5 @@
 <?php
-include_once 'WEB2TPE/view/home_view.phtml';
+include_once 'view/home.phtml';
 
     class ControladorHome {
         private $view;

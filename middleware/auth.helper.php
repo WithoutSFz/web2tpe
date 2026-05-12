@@ -3,7 +3,7 @@
 
 // Define la URL base para las redirecciones (AJUSTA ESTA RUTA SI ES NECESARIO)
 if (!defined('BASE_URL')) {
-    define('BASE_URL', 'http://localhost/web-2-TPE-BIBLIOTECA/'); 
+    define('BASE_URL', 'http://localhost/WEB2TPE/'); 
 }
 
 class AuthHelper {

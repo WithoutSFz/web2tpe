@@ -1,10 +1,12 @@
 <?php
-include_once 'WEB2TPE/controlador/autores_controller.php';
-include_once 'WEB2TPE/controlador/home_controller.php';
+include_once 'controller/autores_controller.php';
+include_once 'controller/home_controller.php';
+include_once 'controller/libros_contoller.php';
+include_once 'middleware/auth.helper.php';
 
 $action= 'home';
-if (!empty ($GET_['action'])){
-    $action= $GET_['action'];
+if (!empty ($_GET['action'])){
+    $action= $_GET['action'];
 }
 
 $params= explode('/', $action);
