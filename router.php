@@ -1,7 +1,7 @@
 <?php
 include_once 'controller/autores_controller.php';
 include_once 'controller/home_controller.php';
-include_once 'controller/libros_contoller.php';
+include_once 'controller/libros_controller.php';
 include_once 'middleware/auth.helper.php';
 
 $action= 'home';
@@ -33,7 +33,11 @@ switch ($params[0]){
     
     /*login*/
     /*verify*/
-    /*logout*/
+    case 'logout':
+        $authHelper= new AuthHelper();
+        $authHelper-> logout();
+        break;
+    
     /*admin*/
     /*agregarAutorForm*/
     /*agregarAutor*/
