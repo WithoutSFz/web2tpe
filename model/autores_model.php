@@ -20,4 +20,22 @@ class AutoresModel extends Model {
         $query->execute([$id_autor]);
         return $query->fetchAll(PDO::FETCH_OBJ);
     }
+
+    //alta- INSERT
+    function agregarAutor($nombre, $apellido, $nacionalidad){
+        $query = $this->db->prepare("INSERT INTO autores (nombre, apellido, naciolidad) VALUES (?, ?, ?)");
+        $query->execute([$nombre, $apellido, $nacionalidad]);
+    }
+
+    //media- UPDATE
+    function editarAutor($id_autor, $nombre, $apellido, $nacionalidad){
+        $query= $this->db->prepare("UPDATE autores SET nombre = ?, apellido = ?, nacionalidad = ? WHERE id_autor = ?");
+        return $query -> execute([$nombre, $apellido, $nacionalidad, $id_autor]);    
+    }
+
+    //baja- DELETE
+    function eliminarAutor($id_autor){
+        $query = $this->db->prepare("DELETE FROM autores WHERE id_autor= ?");
+        return $query->execute([$id_autor]);
+    }
 }

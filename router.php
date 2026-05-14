@@ -16,6 +16,9 @@ switch ($params[0]){
         $controller= new ControladorHome();
         $controller -> showHome();
         break;
+    case 'showAutores':
+        $controller= new AutoresController();
+        $controller->showAutores();
     /*listarLibros*/
     /*detalleLibro*/
     /*buscarLibro*/
