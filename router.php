@@ -42,12 +42,41 @@ switch ($params[0]){
         break;
     
     /*admin*/
+    case 'admin':
+        AuthHelper::checkAdmin();
+        $controller= new ControladorAdministrador();
+        $controller->showPanelAdmin();
+        break;
     /*agregarAutorForm*/
+    case 'agregarAutorForm':
+        AuthHelper::checkAdmin();
+        $controller=new AutoresController();
+        $controller->agregarAutor();
+        break;
     /*agregarAutor*/
+    case 'agregarAutor':
+        AuthHelper::checkAdmin();
+        $controller=new AutoresController();
+        $controller->agregarAutor();
+        break;
     /*editarAutorForm*/
-    /*editarAutorForm*/
+    case 'editarAutorForm':
+        AuthHelper::checkAdmin();
+        $controller=new AutoresController();
+        $controller->editarAutor();
+        break;
     /*editarAutor*/
+    case 'editarAutor':
+        AuthHelper::checkAdmin();
+        $controller= new AutoresController();
+        $controller->editarAutor();
+        break;
     /*eliminarAutor*/
+    case 'eliminarAutor':
+        AuthHelper::checkAdmin();
+        $controller= new AutoresController();
+        $controller->eliminarAutor();
+        break;
     /*agregarLibroForm*/
     /*agregarLibroForm*/
     /*agregarLibro*/
