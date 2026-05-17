@@ -55,5 +55,71 @@ class LibrosController{
         }
     }
 
-    
+    function showFormAgregarLibro(){
+        $this->viewLibro->mostrarFormularioAltaLibro();
+    }
+
+    function agregarLibro(){
+        $titulo = $_POST['titulo'] ?? null;
+        $genero = $_POST['genero'] ?? null;
+        $anio_publicacion = $_POST['anio_publicacion'] ?? null;
+        $editorial = $_POST['editorial'] ?? null;
+        $id_autor = $_POST['id_autor'] ?? null;
+
+        if(empty($titulo) || empty($genero) || empty($id_autor)){
+            $this->viewLibro->mostrarError("Faltan campos obligatorios (Título, Género e ID del autor). ");
+            return;
+        }
+
+        $this->modelLibro->agregarLibro($titulo, $genero, $anio_publicacion, $editorial, $id_autor);
+
+        header("Location: route.php?action=admin");
+        exit;
+    }
+
+    function showFormEditarLibro($id_libro = null){
+
+        if(empty($id_libro) || !is_numeric($id_libro)){
+            $this->viewLibro->mostrarError("ID de libro no especificado para edición.");
+            return;
+        }
+
+        $libro = $this->modelLibro->obtenerLibroPorId($id_libro);
+
+        if ($libro){
+            $this->viewLibro->mostrarFormularioEdicion($libro);
+        } else {
+            $this->viewLibro->mostrarError("Libro a editar no encontrado.");
+        }
+    }
+
+    function editarLibro() {
+        $id_libro= $_POST['id_libro'] ?? null;
+        $titulo = $_POST['titulo'] ?? null;
+        $genero = $_POST['genero'] ?? null;
+        $anio_publicacion = $_POST['anio_publicacion'] ?? null;
+        $editorial = $_POST['editorial'] ?? null;
+        $id_autor = $_POST['id_autor'] ?? null;
+
+        if (empty($id_libro) || empty($titulo) || empty($genero)) {
+            $this->viewLibro->mostrarError("Faltan datos obligatorios para la edición.");
+            return;
+        }
+
+        $this->modelLibro->editarLibro($id_libro, $titulo, $genero, $anio_publicacion, $editorial, $id_autor);
+        header("Location: route.php?action=admin");
+        exit;
+    }
+
+
+    function eliminarLibro($id_libro = null) {
+        if (empty($id_libro) || !is_numeric($id_libro)) {
+            $this->viewLibro->mostrarError("Debe indicar un ID de libro válido para eliminar.");
+            return;
+        }
+
+        $this->modelLibro->eliminarLibro($id_libro);
+        header("Location: route.php?action=admin");
+        exit;
+    }
 }

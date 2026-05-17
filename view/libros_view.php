@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body> 
+    <?php
+
+    class LibrosView { 
+
+        // Muestra el listado de todos los libros
+        public function mostrarLibros($libros) {
+            ?>
+            <h1>Listado de Libros</h1>
+            
+            <h2>Buscar Libro por Título</h2>
+            <form action="buscarLibro" method="GET">
+                <input type="text" name="titulo_libro" placeholder="Ingrese el título del libro" required>
+                <button type="submit">Buscar Libro</button>
+            </form>
+
+            <hr>
+            <h2>Buscar Autor</h2>
+            <form action="buscarAutor" method="GET">
+                <input type="text" name="nombre_autor" placeholder="Ingrese nombre o apellido del autor" required>
+                <button type="submit">Buscar Autor</button>
+            </form>
+            <hr>
+
+            <table border="1" cellpadding="5" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>Título</th>
+                        <th>Autor</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php foreach ($libros as $libro): ?>
+                        <tr>
+                            <td><?= htmlspecialchars($libro->titulo) ?></td>
+                            <td><?= htmlspecialchars($libro->nombre_autor . ' ' . $libro->apellido_autor)?></td>
+                        </tr>
+                    <?php endforeach; ?>
+                </tbody>
+            </table>
+            <?php
+        }
+
+        // Muestra el detalle de un solo libro
+        public function mostrarDetalleLibro($libro) {
+            ?>
+            <h1>Detalle del Libro: <?= htmlspecialchars($libro->titulo) ?></h1>
+
+            <?php if ($libro): ?>
+                <p><strong>Género:</strong> <?= htmlspecialchars($libro->genero) ?></p>
+                <p><strong>Año de publicación:</strong> <?= htmlspecialchars($libro->anio_publicacion) ?></p>
+                <p><strong>Editorial:</strong> <?= htmlspecialchars($libro->editorial) ?></p>
+                <p><strong>Autor:</strong> <?= htmlspecialchars($libro->nombre_autor . ' ' . $libro->apellido_autor) ?></p>
+                <a href="listarLibros">Volver al listado</a>
+            <?php else: ?>
+                <p>No se encontró el libro solicitado.</p>
+            <?php endif; ?>
+            <?php
+        }
+
+        public function mostrarError($mensaje){
+            ?>
+            <h1>Error</h1>
+            <p ><?= htmlspecialchars($mensaje) ?></p>
+            <a href="listarLibros">volver al listado</a>
+            <?php
+        }
+
+        public function mostrarLogin($error = null) {
+            // La variable $error estará disponible en login.phtml
+            require 'login.phtml'; 
+        }
+
+        function mostrarFormularioAltaLibro() {
+            ?>
+            <h1>Agregar Nuevo Libro</h1>
+            <form method="POST" action="route.php?action=agregarLibro">
+        
+                <label for="titulo">Título:</label>
+                <input type="text" name="titulo" required><br><br>
+        
+                <label for="genero">Género:</label>
+                <input type="text" name="genero" required><br><br>
+        
+                <label for="anio_publicacion">Año de Publicación:</label>
+                <input type="number" name="anio_publicacion"><br><br>
+                
+                <label for="editorial">Editorial:</label>
+                <input type="text" name="editorial"><br><br>
+        
+                <label for="id_autor">ID Autor:</label>
+                <input type="number" name="id_autor" required><br><br>
+                    
+                <button type="submit">Guardar Libro</button>
+                <a href="route.php?action=listarLibros">Cancelar</a>
+            </form>
+            <?php
+        }
+
+
+        function mostrarFormularioEdicion($libro) {
+            ?>
+            <h1>Editar Libro: <?= htmlspecialchars($libro->titulo) ?></h1>
+                <form method="POST" action="route.php?action=editarLibro">
+                        
+                    <input type="hidden" name="id_libro" value="<?= $libro->id_libro ?>">
+                        
+                    <label for="titulo">Titulo:</label>
+                    <input type="text" name="titulo" value="<?= htmlspecialchars($libro->titulo) ?>" required><br><br>
+
+                    <label for="genero">Género:</label>
+                    <input type="text" name="genero" value="<?= htmlspecialchars($libro->genero) ?>" required><br><br>
+
+                    <label for="anio_publicacion">Año de publicación:</label>
+                    <input type="number" name="anio_publicacion" value="<?= htmlspecialchars($libro->anio_publicacion ?? '') ?>"><br><br>
+                        
+                    <label for="editorial">Editorial:</label>
+                    <input type="text" name="editorial" value="<?= htmlspecialchars($libro->editorial ?? '') ?>"><br><br>
+
+                    <label for="id_autor">Autor:</label>
+                    <input type="number" name="id_autor" value="<?= htmlspecialchars($libro->id_autor ?? '') ?>"><br><br>
+
+                    <label for="foto_url">URL Foto (opcional):</label>
+                    <input type="text" name="foto_url" value=""><br><br>
+
+                    <button type="submit">Guardar Cambios</button>
+                    <a href="route.php?action=listarLibros">Cancelar</a>
+                </form>
+            <?php
+        }  
+    }
+    ?>
+</body>
+</html>
