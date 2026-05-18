@@ -10,7 +10,6 @@
     <?php
 
     class LibrosView { 
-
         // Muestra el listado de todos los libros
         public function mostrarLibros($libros) {
             ?>
@@ -59,7 +58,7 @@
                 <p><strong>Año de publicación:</strong> <?= htmlspecialchars($libro->anio_publicacion) ?></p>
                 <p><strong>Editorial:</strong> <?= htmlspecialchars($libro->editorial) ?></p>
                 <p><strong>Autor:</strong> <?= htmlspecialchars($libro->nombre_autor . ' ' . $libro->apellido_autor) ?></p>
-                <a href="listarLibros">Volver al listado</a>
+                <a href="showLibros">Volver al listado</a>
             <?php else: ?>
                 <p>No se encontró el libro solicitado.</p>
             <?php endif; ?>
@@ -70,7 +69,7 @@
             ?>
             <h1>Error</h1>
             <p ><?= htmlspecialchars($mensaje) ?></p>
-            <a href="listarLibros">volver al listado</a>
+            <a href="showLibros">volver al listado</a>
             <?php
         }
 

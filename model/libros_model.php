@@ -1,10 +1,10 @@
 <?php
-include_once 'WEB2TPE/model/model.php';
+include_once 'model/model.php';
 
 class LibrosModel extends Model{
     public function obtenerLibros(){
         $query = $this ->db->prepare('
-            SELECT libros.*, autores..nombres AS nombre_autor, autores.apellido AS apellido_autor
+            SELECT libros.*, autores.nombre AS nombre_autor, autores.apellido AS apellido_autor
             FROM libros
             JOIN autores ON libros.id_autor = autores.id_autor
         ');
@@ -12,7 +12,7 @@ class LibrosModel extends Model{
         return $query->fetchAll(PDO::FETCH_OBJ);
     }
 
-    public function obtenerLibrosPorId($id){
+    public function obtenerLibroPorId($id){
         $query = $this->db->prepare('
             SELECT libros.*, autores.nombre AS nombre_autor, autores.apellido AS apellido_autor
             FROM libros

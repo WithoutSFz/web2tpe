@@ -1,0 +1,38 @@
+<?php
+class LoginView {
+    public function mostrarLogin($error = null) {
+            
+        
+        ?>
+            <!DOCTYPE html>
+            <html lang="en">
+            <head>
+                <meta charset="UTF-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <title>Login de Administración</title>
+                <link rel="stylesheet" href="./css/style.css">
+            </head>
+            <body>
+                <h2>Login de Administrador</h2>
+
+                <form action="verify" method="POST">
+                    
+                    <?php if (!empty($error)): ?>
+                        <p style="color: red; font-weight: bold;"><?= htmlspecialchars($error) ?></p>
+                    <?php endif; ?>
+
+                    <input type="text" name="email" placeholder="Ingrese su usuario (webadmin)..." required>
+                    <br><br>
+                    
+                    <input type="password" name="password" placeholder="Ingrese su password (admin)..." required>
+                    <br><br>
+                    
+                    <button type="submit">Ingresar</button>
+                </form>
+
+                <a href="listarLibros">Volver al listado público</a>
+            </body>
+            </html>
+        <?php
+    }
+}

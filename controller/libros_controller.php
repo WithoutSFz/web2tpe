@@ -8,8 +8,8 @@ class LibrosController{
     private $viewLibro;
 
     function __construct(){
-        $this->modelo = new LibrosModel();
-        $this->view = new LibrosView();
+        $this->modelLibro = new LibrosModel();
+        $this->viewLibro = new LibrosView();
     }
 
     //muestra todos los libros
@@ -24,7 +24,7 @@ class LibrosController{
     }
 
     function showLibrosPorId($id_libro=null){
-        if (empty($id_libro=null) || !is_numeric($id_libro)){
+        if (empty($id_libro) || !is_numeric($id_libro)){
             $this->viewLibro->mostrarError("Debe indicar el ID del libro.");
             return;
         }
@@ -34,7 +34,7 @@ class LibrosController{
         if(empty($libro)){
             $this->viewLibro->mostrarError("No se encommtró el libro con ID: " . $id_libro);
         }else{
-            $this->viewLibro->mostarDetalleLibro($libro);
+            $this->viewLibro->mostrarDetalleLibro($libro);
         }
     }
 
@@ -46,7 +46,7 @@ class LibrosController{
             return;
         }
 
-        $libro = $this->modelLibro->buscarLibroPorTitulo($titulo_buscado);
+        $libro = $this->modelLibro->buscarLibrosPorTitulo($titulo_buscado);
 
         if ($libro){
             $this->viewLibro->mostrardetalleLibro($libro);
