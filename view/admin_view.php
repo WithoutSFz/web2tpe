@@ -15,7 +15,7 @@ class AdminView{
         
         <p>
             <a href="route.php?action=logout">[ Cerrar Sesión ]</a> | 
-            <a href="route.php?action=listarLibros">Ir a la Vista Pública</a>
+            <a href="route.php?action=showLibros">Ir a la Vista Pública</a>
         </p>
         <hr>
 

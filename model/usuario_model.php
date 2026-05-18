@@ -1,5 +1,5 @@
 <?php
-include_once 'WEB2TPE/model/model.php';
+include_once 'model/model.php';
 
 class UsuarioModel extends Model {
     public function obtenerUsuarioPorEmail($email){

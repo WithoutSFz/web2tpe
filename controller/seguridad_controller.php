@@ -1,7 +1,7 @@
 <?php
-include_once 'WEB2TPE/model/usuario_model.php';
-include_once 'WEB2TPE/view/login.php';
-include_once 'WEB2TPE/middleware/auth.helper.php';
+include_once 'model/usuario_model.php';
+include_once 'view/login.php';
+include_once 'middleware/auth.helper.php';
 
 class SeguridadController{
     private $model;
@@ -16,7 +16,7 @@ class SeguridadController{
 
     //muestra form login
     function showLoginForm($error = null){
-        $this->showLoginForm($error);
+        $this->view->mostrarLogin($error);
     }
 
     //procesa POST login

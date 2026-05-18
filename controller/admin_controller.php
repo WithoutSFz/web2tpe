@@ -1,8 +1,8 @@
 <?php
-require_once 'WEB2TPE/model/libros_model.php';
-require_once 'WEB2TPE/model/autores_model.php';
-require_once 'WEB2TPE/view/admin_view.php';
-require_once 'WEB2TPE/middleware/auth.helper.php';
+require_once 'model/libros_model.php';
+require_once 'model/autores_model.php';
+require_once 'view/admin_view.php';
+require_once 'middleware/auth.helper.php';
 
 class ControladorAdministrador{
     private $view;
@@ -11,12 +11,12 @@ class ControladorAdministrador{
 
     public function __construct(){
         $this->view= new AdminView;
-        //$this->librosModel= new LibrosModel();
+        $this->librosModel= new LibrosModel();
         $this->autoresModel= new AutoresModel();
     }
 
     public function showPanelAdmin(){
-        //$libros= $this->librosModel-> obtenerLibros();
+        $libros= $this->librosModel-> obtenerLibros();
         $autores= $this->autoresModel-> obtenerTodosLosAutores();
 
         $this->view->mostrarPanelAdmin($autores, $libros);
