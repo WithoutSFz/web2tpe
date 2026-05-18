@@ -70,7 +70,7 @@ switch ($params[0]){
     case 'agregarAutorForm':
         AuthHelper::checkAdmin();
         $controller =new AutoresController();
-        $controller->agregarAutor();
+        $controller->showFormAgregarAutor();
         break;
     /*agregarAutor*/
     case 'agregarAutor':

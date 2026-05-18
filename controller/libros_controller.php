@@ -49,14 +49,16 @@ class LibrosController{
         $libro = $this->modelLibro->buscarLibrosPorTitulo($titulo_buscado);
 
         if ($libro){
-            $this->viewLibro->mostrardetalleLibro($libro);
+            $this->viewLibro->mostrarDetalleLibro($libro);
         } else{
             $this->viewLibro->mostrarError("No se encomtro el libro con el titulo: '{$titulo_buscado}'.");
         }
     }
 
     function showFormAgregarLibro(){
-        $this->viewLibro->mostrarFormularioAltaLibro();
+        $autoresModel = new AutoresModel();
+        $autores = $autoresModel->obtenerTodosLosAutores();
+        $this->viewLibro->mostrarFormularioAltaLibro($autores);
     }
 
     function agregarLibro(){

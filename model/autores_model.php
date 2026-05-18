@@ -23,7 +23,7 @@ class AutoresModel extends Model {
 
     //alta- INSERT
     function agregarAutor($nombre, $apellido, $nacionalidad){
-        $query = $this->db->prepare("INSERT INTO autores (nombre, apellido, naciolidad) VALUES (?, ?, ?)");
+        $query = $this->db->prepare("INSERT INTO autores (nombre, apellido, nacionalidad) VALUES (?, ?, ?)");
         $query->execute([$nombre, $apellido, $nacionalidad]);
     }
 

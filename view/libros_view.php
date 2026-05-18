@@ -78,7 +78,7 @@
             require 'login.phtml'; 
         }
 
-        function mostrarFormularioAltaLibro() {
+        function mostrarFormularioAltaLibro($autores) {
             ?>
             <h1>Agregar Nuevo Libro</h1>
             <form method="POST" action="route.php?action=agregarLibro">
@@ -99,7 +99,7 @@
                 <input type="number" name="id_autor" required><br><br>
                     
                 <button type="submit">Guardar Libro</button>
-                <a href="route.php?action=listarLibros">Cancelar</a>
+                <a href="route.php?action=showLibros">Cancelar</a>
             </form>
             <?php
         }
@@ -131,11 +131,11 @@
                     <input type="text" name="foto_url" value=""><br><br>
 
                     <button type="submit">Guardar Cambios</button>
-                    <a href="route.php?action=listarLibros">Cancelar</a>
+                    <a href="route.php?action=showLibros">Cancelar</a>
                 </form>
             <?php
         }  
     }
     ?>
 </body>
-</html>
+</html>if
