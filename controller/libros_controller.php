@@ -75,7 +75,7 @@ class LibrosController{
 
         $this->modelLibro->agregarLibro($titulo, $genero, $anio_publicacion, $editorial, $id_autor);
 
-        header("Location: route.php?action=admin");
+        header("Location: router.php?action=admin");
         exit;
     }
 
@@ -109,7 +109,7 @@ class LibrosController{
         }
 
         $this->modelLibro->editarLibro($id_libro, $titulo, $genero, $anio_publicacion, $editorial, $id_autor);
-        header("Location: route.php?action=admin");
+        header("Location: router.php?action=admin");
         exit;
     }
 
@@ -121,7 +121,7 @@ class LibrosController{
         }
 
         $this->modelLibro->eliminarLibro($id_libro);
-        header("Location: route.php?action=admin");
+        header("Location: router.php?action=admin");
         exit;
     }
 }

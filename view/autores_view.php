@@ -23,8 +23,8 @@
                 <body>
                 <h1>Listado de Autores (Categorías)</h1>
                 <p>
-                    <a href="route.php?action=listarLibros">Ver todos los libros</a><br>
-                    <a href="route.php?action=agregarAutorForm">Agregar Nueva Categoría</a><br>
+                    <a href="router.php?action=showLibros">Ver todos los libros</a><br>
+                    <a href="router.php?action=agregarAutorForm">Agregar Nueva Categoría</a><br>
                 </p>
                     <hr>
                 <?php if (empty($autores)): ?>
@@ -34,11 +34,11 @@
                     <ul>
                         <?php foreach ($autores as $autor): ?>
                             <li>    
-                                <a href="route.php?action=librosPorAutor/<?= $autor->id_autor ?>">
+                                <a href="router.php?action=librosPorAutor/<?= $autor->id_autor ?>">
                                     <?= htmlspecialchars($autor->nombre . ' ' . $autor->apellido) ?>
                                 </a>
-                                    [ <a href="route.php?action=editarAutorForm/<?= $autor->id_autor ?>">Editar</a> ]
-                                    [ <a href="route.php?action=eliminarAutor/<?= $autor->id_autor ?>">Eliminar</a> ]
+                                    [ <a href="router.php?action=editarAutorForm/<?= $autor->id_autor ?>">Editar</a> ]
+                                    [ <a href="router.php?action=eliminarAutor/<?= $autor->id_autor ?>">Eliminar</a> ]
                             </li>
                         <?php endforeach; ?>
                     </ul>
@@ -53,7 +53,7 @@
             ?>
             <h1>Error de Autor</h1>
                 <p><?= htmlspecialchars($mensaje) ?></p>
-                <a href="route.php?action=listarLibros">Volver al inicio</a>
+                <a href="router.php?action=showLibros">Volver al inicio</a>
             <?php
         }
         
@@ -75,7 +75,7 @@
                     <p><strong>Nacionalidad:</strong> <?= htmlspecialchars($autor->nacionalidad) ?></p>
                         
                         <hr>
-                        <a href="listarLibros">Volver al listado</a>
+                        <a href="showLibros">Volver al listado</a>
                 <?php else: ?>
                         <p>No se encontraron datos del autor.</p>
                 <?php endif; ?>
@@ -87,7 +87,7 @@
         function mostrarFormularioAlta() {
             ?>
                 <h1>Agregar Autor</h1>
-                <form method="POST" action="route.php?action=agregarAutor">
+                <form method="POST" action="router.php?action=agregarAutor">
 
                     <label for="nombre">Nombre:</label>
                     <input type="text" name="nombre" required><br><br>
@@ -99,7 +99,7 @@
                     <input type="text" name="nacionalidad"><br><br>
                         
                     <button type="submit">Guardar Categoría</button>
-                    <a href="route.php?action=listarAutores">Cancelar</a>
+                    <a href="router.php?action=listarAutores">Cancelar</a>
                 </form>
             <?php
         }
@@ -107,7 +107,7 @@
         function mostrarFormularioEdicion($autor) {
             ?>
             <h1>Editar Categoría: <?= htmlspecialchars($autor->nombre . ' ' . $autor->apellido) ?></h1>
-                <form method="POST" action="route.php?action=editarAutor">
+                <form method="POST" action="router.php?action=editarAutor">
                         
                     <input type="hidden" name="id_autor" value="<?= $autor->id_autor ?>">
                         
@@ -121,7 +121,7 @@
                     <input type="text" name="nacionalidad" value="<?= htmlspecialchars($autor->nacionalidad ?? '') ?>"><br><br>
     
                     <button type="submit">Guardar Cambios</button>
-                    <a href="route.php?action=listarAutores">Cancelar</a>
+                    <a href="router.php?action=listarAutores">Cancelar</a>
                 </form>
             <?php
             }          

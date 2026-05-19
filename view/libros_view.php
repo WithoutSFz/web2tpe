@@ -1,15 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="./css/style.css">
-</head>
-<body> 
-    <?php
+<?php
 
     class LibrosView { 
+
         // Muestra el listado de todos los libros
         public function mostrarLibros($libros) {
             ?>
@@ -81,7 +73,7 @@
         function mostrarFormularioAltaLibro($autores) {
             ?>
             <h1>Agregar Nuevo Libro</h1>
-            <form method="POST" action="route.php?action=agregarLibro">
+            <form method="POST" action="router.php?action=agregarLibro">
         
                 <label for="titulo">Título:</label>
                 <input type="text" name="titulo" required><br><br>
@@ -95,11 +87,17 @@
                 <label for="editorial">Editorial:</label>
                 <input type="text" name="editorial"><br><br>
         
-                <label for="id_autor">ID Autor:</label>
-                <input type="number" name="id_autor" required><br><br>
+                <label for="id_autor">Autor:</label>
+                <select name="id_autor" required>
+                    <?php foreach($autores as $autor): ?>
+                        <option value="<?= $autor->id_autor ?>">
+                            <?= htmlspecialchars($autor->nombre . ' ' . $autor->apellido) ?>
+                        </option>
+                    <?php endforeach; ?>
+                </select>
                     
                 <button type="submit">Guardar Libro</button>
-                <a href="route.php?action=showLibros">Cancelar</a>
+                <a href="router.php?action=showLibros">Cancelar</a>
             </form>
             <?php
         }
@@ -108,7 +106,7 @@
         function mostrarFormularioEdicion($libro) {
             ?>
             <h1>Editar Libro: <?= htmlspecialchars($libro->titulo) ?></h1>
-                <form method="POST" action="route.php?action=editarLibro">
+                <form method="POST" action="router.php?action=editarLibro">
                         
                     <input type="hidden" name="id_libro" value="<?= $libro->id_libro ?>">
                         
@@ -131,11 +129,11 @@
                     <input type="text" name="foto_url" value=""><br><br>
 
                     <button type="submit">Guardar Cambios</button>
-                    <a href="route.php?action=showLibros">Cancelar</a>
+                    <a href="router.php?action=showLibros">Cancelar</a>
                 </form>
             <?php
         }  
     }
     ?>
 </body>
-</html>if
+</html>

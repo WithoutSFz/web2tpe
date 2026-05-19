@@ -14,14 +14,14 @@ class AdminView{
         <h1>Panel de Administración (ABM)</h1>
         
         <p>
-            <a href="route.php?action=logout">[ Cerrar Sesión ]</a> | 
-            <a href="route.php?action=showLibros">Ir a la Vista Pública</a>
+            <a href="router.php?action=logout">[ Cerrar Sesión ]</a> | 
+            <a href="router.php?action=showLibros">Ir a la Vista Pública</a>
         </p>
         <hr>
 
         <h2>
             Administrar Autores
-            <a href="route.php?action=agregarAutorForm" style="margin-left: 20px;">[ + Agregar Autor ]</a>
+            <a href="router.php?action=agregarAutorForm" style="margin-left: 20px;">[ + Agregar Autor ]</a>
         </h2>
         
         <table border="1" cellpadding="5" cellspacing="0">
@@ -40,9 +40,9 @@ class AdminView{
                     <td><?= htmlspecialchars($autor->nombre . ' ' . $autor->apellido) ?></td>
                     <td><?= htmlspecialchars($autor->nacionalidad) ?></td>
                     <td>
-                        <a href="route.php?action=editarAutorForm/<?= $autor->id_autor ?>">Editar</a> | 
+                        <a href="router.php?action=editarAutorForm/<?= $autor->id_autor ?>">Editar</a> | 
                         
-                        <a href="route.php?action=eliminarAutor/<?= $autor->id_autor ?>" 
+                        <a href="router.php?action=eliminarAutor/<?= $autor->id_autor ?>" 
                            onclick="return confirm('¿Está seguro de eliminar a este autor?');">Eliminar</a>
                     </td>
                 </tr>
@@ -54,31 +54,38 @@ class AdminView{
 
         <h2>
             Administrar Libros
-            <a href="route.php?action=agregarLibroForm" style="margin-left: 20px;">[ + Agregar Libro ]</a>
+            <a href="router.php?action=agregarLibroForm" style="margin-left: 20px;">[ + Agregar Libro ]</a>
         </h2>
         
         <table border="1" cellpadding="5" cellspacing="0">
             <thead>
                 <tr>
-                    <!--<th>ID</th>-->
                     <th>Título</th>
-                    <!--<th>Autor ID</th>-->
                     <th>Género</th>
+                    <th>Año</th>
+                    <th>Editorial</th>
+                    <th>Autor</th>
                     <th>Acciones</th>
                 </tr>
             </thead>
             <tbody>
                 <?php foreach ($libros as $libro): ?> 
                 <tr>
-                    <!--<td><?= htmlspecialchars($libro->id_libro) ?></td>-->
                     <td><?= htmlspecialchars($libro->titulo) ?></td>
-                    <!--<td><?= htmlspecialchars($libro->id_autor) ?></td>-->
                     <td><?= htmlspecialchars($libro->genero) ?></td>
+                    <td><?= htmlspecialchars($libro->anio_publicacion) ?></td>
+                    <td><?= htmlspecialchars($libro->editorial) ?></td>
                     <td>
-                        <a href="route.php?action=editarLibroForm/<?= $libro->id_libro ?>">Editar</a> | 
-                        
-                        <a href="route.php?action=eliminarLibro/<?= $libro->id_libro ?>"
-                           onclick="return confirm('¿Está seguro de eliminar este libro?');">Eliminar</a>
+                        <?= htmlspecialchars($libro->nombre_autor . ' ' . $libro->apellido_autor) ?>
+                    </td>
+                    <td>
+                        <a href="router.php?action=editarLibroForm/<?= $libro->id_libro ?>">
+                            Editar
+                        </a>
+                        <a href="router.php?action=eliminarLibro/<?= $libro->id_libro ?>"
+                        onclick="return confirm('¿Está seguro de eliminar este libro?');">
+                        Eliminar
+                        </a>
                     </td>
                 </tr>
                 <?php endforeach; ?>
